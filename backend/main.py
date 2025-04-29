@@ -17,20 +17,21 @@ app.add_middleware(
 )
 
 @app.get("/")
-def read_root():
+def root():
     return {"message": "Bienvenido a JurisMind Abogados"}
 
 @app.post("/consulta")
 async def consulta_legal(request: Request):
     data = await request.json()
     pregunta = data.get("pregunta", "")
-    
+
     if not pregunta:
         return {"error": "No se recibió ninguna pregunta"}
-    
+
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": pregunta}]
     )
-    
+
     return {"respuesta": response['choices'][0]['message']['content']}
+
