@@ -1,0 +1,17 @@
+# Python
+*.pyc
+__pycache__/
+env/
+venv/
+.venv/
+
+# Archivos sensibles
+.env
+.env.*
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs
+*.log
